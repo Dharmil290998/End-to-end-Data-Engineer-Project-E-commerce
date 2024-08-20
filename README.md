@@ -8,8 +8,8 @@ The final step involves leveraging Power BI for insightful data visualization, c
 <img src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/Project%20Flow.png">
 
 ## Current Environment
-Utilized the E-commerce dataset from Microsoft.
-Set up an on-premises Microsoft SQL server on a personal computer.
-Imported the dataset using Microsoft SQL Server Management Studio.
-Created a new user profile, "ndp."
-Saved "ndp" profile's password credentials as a Secret in Azure Key Vault.
+* Utilized the E-commerce dataset from Microsoft.
+* Set up an on-premises Microsoft SQL server on a personal computer.
+* Imported the dataset using Microsoft SQL Server Management Studio.
+* Created a new user profile, "ndp."
+* Saved "ndp" profile's password credentials as a Secret in Azure Key Vault.
