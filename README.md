@@ -70,7 +70,7 @@ Data from the "gold" folder is loaded into the Business Intelligence reporting a
 * Creating a link from Azure Storage (Gold Folder) to Azure Synapse.
 * Writing stored procedures to extract table information as a SQL view.
 * Storing views within a server-less SQL Database in Synapse.
-<img src="
+<img src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/Azure%20Synapse%20pipeline.png">
 
 
 4: **Data Reporting**
