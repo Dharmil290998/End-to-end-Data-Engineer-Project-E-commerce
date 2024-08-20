@@ -13,3 +13,7 @@ The final step involves leveraging Power BI for insightful data visualization, c
 * Imported the dataset using Microsoft SQL Server Management Studio.
 * Created a new user profile, "ndp."
 * Saved "ndp" profile's password credentials as a Secret in Azure Key Vault.
+
+<img src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/on-premises%20Microsoft%20SQL%20server.png">
+
+
