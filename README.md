@@ -41,3 +41,27 @@ This project leverages the following Azure services:
 ## Data Model
 <img src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/Data%20Model.png">
 
+1. **Data Ingestion**
+   - Data ingestion from the on-premises SQL server to Azure SQL is accomplished via Azure Data Factory. The process involves:
+   - Installation of Self-Hosted Integration Runtime.
+   - Establishing a connection between Azure Data Factory and the local SQL Server.
+   - Setting up a copy pipeline to transfer all tables from the local SQL server to the Azure Data Lake's "silver" folder.
+
+
+2. **Data Transformation**
+   - After ingesting data into the "silver" folder, it is transformed following the medallion data lake architecture (silver, gold). Data transitions through silver, and ultimately gold, suitable for business reporting      tools like Power BI.
+   - Azure Databricks, using PySpark, is used for these transformations. Data initially stored in parquet format in the "silver" folder is converted to the delta format as it progresses to "gold." This                       transformation is carried out through Databricks notebooks:
+   * Mount the storage.
+   * Transform data from "silver" to "gold" layer.
+
+Azure Data Factory is updated to execute the "bronze" to "silver" and "silver" to "gold" notebooks automatically with each pipeline run.
+  
+3. **Data Loading**
+Data from the "gold" folder is loaded into the Business Intelligence reporting application, Power BI. Azure Synapse is used for this purpose. The steps involve:
+
+* Creating a link from Azure Storage (Gold Folder) to Azure Synapse.
+* Writing stored procedures to extract table information as a SQL view.
+* Storing views within a server-less SQL Database in Synapse.
+
+4: **Data Reporting**
+Power BI connects directly to the cloud pipeline using DirectQuery to dynamically update the database. A Power BI report is developed to visualize AdventureWorks dataset data, including sales, product information, and customer gender.
