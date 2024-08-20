@@ -54,11 +54,14 @@ This project leverages the following Azure services:
    * Mount the storage.
    * Transform data from "silver" to "gold" layer.
 <video width="640" height="360" controls>
-  <source src="video_name.mp4" type="video/mp4">
+  <source src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/Data%20Cleaning%20in%20Databricks.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
 Azure Data Factory is updated to execute the "silver" to "gold" notebooks automatically with each pipeline run.
+
+<img src="
+
   
 3. **Data Loading**
 Data from the "gold" folder is loaded into the Business Intelligence reporting application, Power BI. Azure Synapse is used for this purpose. The steps involve:
