@@ -6,6 +6,7 @@ The final step involves leveraging Power BI for insightful data visualization, c
 ## Project Architecture:
 
 <img src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/Project%20Flow.png">
+
 * Data is ingested and orchestrated using Azure Data Factory.
 * Raw data is stored in the <b>Silver layer</b> of Azure Data Lake Storage Gen2.
 * Data is processed and cleansed using Azure Databricks, with results stored in the Silver layer.
