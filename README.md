@@ -46,15 +46,19 @@ This project leverages the following Azure services:
    - Installation of Self-Hosted Integration Runtime.
    - Establishing a connection between Azure Data Factory and the local SQL Server.
    - Setting up a copy pipeline to transfer all tables from the local SQL server to the Azure Data Lake's "silver" folder.
-
+<img src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/Data%20Ingestion.png">
 
 2. **Data Transformation**
    - After ingesting data into the "silver" folder, it is transformed following the medallion data lake architecture (silver, gold). Data transitions through silver, and ultimately gold, suitable for business reporting      tools like Power BI.
    - Azure Databricks, using PySpark, is used for these transformations. Data initially stored in parquet format in the "silver" folder is converted to the delta format as it progresses to "gold." This                       transformation is carried out through Databricks notebooks:
    * Mount the storage.
    * Transform data from "silver" to "gold" layer.
+<video width="640" height="360" controls>
+  <source src="video_name.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
-Azure Data Factory is updated to execute the "bronze" to "silver" and "silver" to "gold" notebooks automatically with each pipeline run.
+Azure Data Factory is updated to execute the "silver" to "gold" notebooks automatically with each pipeline run.
   
 3. **Data Loading**
 Data from the "gold" folder is loaded into the Business Intelligence reporting application, Power BI. Azure Synapse is used for this purpose. The steps involve:
