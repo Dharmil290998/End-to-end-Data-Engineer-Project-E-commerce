@@ -4,3 +4,5 @@ This project focuses on building an efficient data pipeline tailored for e-comme
 
 The final step involves leveraging Power BI for insightful data visualization, creating interactive dashboards that provide key business metrics and trends. This end-to-end solution not only streamlines the data processing workflow but also delivers meaningful insights, helping businesses make informed, data-driven decisions.
 ## Business Objective
+
+<img src="C:\Users\Dell\OneDrive\Desktop\Data Engineer Project\Project-1\project.png">
