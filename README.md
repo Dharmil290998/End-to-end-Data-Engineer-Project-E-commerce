@@ -39,5 +39,5 @@ This project leverages the following Azure services:
    - Provides interactive data visualization and business intelligence capabilities.
   
 ## Data Model
-
+<img src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/Data%20Model.png">
 
