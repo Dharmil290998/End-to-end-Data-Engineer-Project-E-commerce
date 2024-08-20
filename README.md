@@ -23,7 +23,7 @@ The final step involves leveraging Power BI for insightful data visualization, c
 
 <img src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/on-premises%20Microsoft%20SQL%20server.png">
 
-## Azure Technologies Used
+## Azure Technologies Used:
 
 This project leverages the following Azure services:
 
@@ -37,3 +37,7 @@ This project leverages the following Azure services:
    - Utilized as an integrated analytics service to accelerate insights from data warehouses and big data systems.
 5. **Power BI**
    - Provides interactive data visualization and business intelligence capabilities.
+  
+## Data Model
+
+
