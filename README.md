@@ -6,12 +6,12 @@ The final step involves leveraging Power BI for insightful data visualization, c
 ## Project Architecture:
 
 <img src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/Project%20Flow.png">
-1. Data is ingested and orchestrated using Azure Data Factory.
-2. Raw data is stored in the <b>Silver layer</b> of Azure Data Lake Storage Gen2.
-3. Data is processed and cleansed using Azure Databricks, with results stored in the Silver layer.
-4. Further transformations and analytics are performed, producing business-ready data in the Gold layer.
-5. Azure Synapse Analytics is used for large-scale data warehousing and analytics.
-6. Final insights are visualized using Power BI.
+* Data is ingested and orchestrated using Azure Data Factory.
+* Raw data is stored in the <b>Silver layer</b> of Azure Data Lake Storage Gen2.
+* Data is processed and cleansed using Azure Databricks, with results stored in the Silver layer.
+* Further transformations and analytics are performed, producing business-ready data in the Gold layer.
+* Azure Synapse Analytics is used for large-scale data warehousing and analytics.
+* Final insights are visualized using Power BI.
    
 ## Current Environment
 * Utilized the E-commerce dataset from Microsoft.
