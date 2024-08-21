@@ -1,0 +1,59 @@
+AverageRevenuePerOrder = DIVIDE([Total Sales], [Total Orders])
+
+AvgRevenuePerSeller = DIVIDE([Total Sales], [TotalActiveSellers], 0)
+
+ResponseRate = DIVIDE(
+    COUNT(feedback_dataset[feedback_answer_date]),
+    COUNT(feedback_dataset[feedback_form_sent_date]),
+    0
+)
+
+
+ResponseTimeDays = DATEDIFF(feedback_dataset[feedback_form_sent_date], feedback_dataset[feedback_answer_date], DAY)
+
+AverageDeliveryTime = AVERAGE(order_dataset[DeliveryTime])
+
+AverageOrderProcessingTime = AVERAGE(order_dataset[OrderProcessingTime])
+
+AverageShippingDays = AVERAGE([ShippingDays])
+
+DeliveredOrders = CALCULATE(COUNTROWS(order_dataset), order_dataset[order_status] = "delivered")
+
+DeliveryDelay = DATEDIFF(order_dataset[estimated_delivery_date], order_dataset[delivered_date], DAY)
+
+DeliveryDuration = DATEDIFF(order_dataset[order_date], order_dataset[delivered_date], DAY)
+
+DeliveryTime = DATEDIFF(order_dataset[pickup_date], order_dataset[delivered_date], DAY)
+
+FulfillmentRate = DIVIDE([DeliveredOrders], [Total Orders], 0)
+
+LateDeliveryCount = COUNTROWS(FILTER(order_dataset, order_dataset[DeliveryDelay] > 0))
+
+
+OnTimeDeliveryRate = 
+DIVIDE(
+  COUNTROWS(
+    FILTER(order_dataset, order_dataset[delivered_date] <= order_dataset[estimated_delivery_date])
+  ),
+  COUNTROWS(order_dataset)
+) * 100
+
+
+OrderProcessingTime = DATEDIFF(order_dataset[order_date], order_dataset[pickup_date], DAY)
+
+ShippingDays = DATEDIFF([order_date], [delivered_date], DAY)
+
+Total Orders = DISTINCTCOUNT(Order_item_dataset[order_id])
+
+Average Order Value = [Total Sales] / [Total Orders]
+
+
+RevenuePerSeller = SUM(payment_dataset[payment_value])
+
+TopSellerRevenue = MAXX(ALL(seller_dataset[seller_id]), [RevenuePerSeller])
+
+Total Sales = SUM(Payment_dataset[payment_value])
+
+TotalActiveSellers = COUNTROWS(DISTINCT(seller_dataset[seller_id]))
+
+Total Customers = DISTINCTCOUNT(user_dataset[user_name])
