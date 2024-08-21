@@ -81,5 +81,10 @@ Power BI connects directly to the cloud pipeline using DirectQuery to dynamicall
 
 <img src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/das-5.png">
 
-## Conclusion:
-This project showcases the integration of Alteryx for efficient ETL processes, Power Query for meticulous transformations, and SQL Server along with Power BI for insightful analysis. Join me in exploring the intricacies of data engineering, from CSV extraction to strategic insights in the context of an ever-evolving e-commerce industry.
+## Conclusion and Limitations
+* This project showcases the integration of Alteryx for efficient ETL processes, Power Query for meticulous transformations, and SQL Server along with Power BI for insightful analysis. Join me in exploring the intricacies of data engineering, from CSV extraction to strategic insights in the context of an ever-evolving e-commerce industry.
+
+The dataset used was small (total 1,00,000 rows). This was done to keep compute + storage costs low for myself.
+Multiple applications were employed for a relatively simple task.
+Given the dataset's simplicity, the project could have been managed entirely through Azure Data Factory, with data cleaning done downstream in Power BI.
+The inclusion of Azure Synapse and Databricks was for the sake of self-learning and emulating real-world business pipelines.
