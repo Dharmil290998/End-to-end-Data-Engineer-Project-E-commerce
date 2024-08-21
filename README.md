@@ -54,7 +54,7 @@ This project leverages the following Azure services:
    * Mount the storage.
    * Transform data from "silver" to "gold" layer.
 
-<iframe src="https://drive.google.com/file/d/1K_HzjWpeX6EJLwuRwzXXZowuMGZsLzVh/view?usp=sharing" width="640" height="360" allow="autoplay"></iframe>
+<iframe src="" width="640" height="360" allow="autoplay"></iframe>
 
 Azure Data Factory is updated to execute the "silver" to "gold" notebooks automatically with each pipeline run.
 
