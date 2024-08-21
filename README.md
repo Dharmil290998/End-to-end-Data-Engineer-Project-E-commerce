@@ -54,9 +54,7 @@ This project leverages the following Azure services:
    * Mount the storage.
    * Transform data from "silver" to "gold" layer.
 
-<video width="640" height="360" controls>
-  <source src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/Data%20Cleaning%20in%20Databricks.mp4" type="mp4">
-</video>
+<iframe src="https://drive.google.com/file/d/1K_HzjWpeX6EJLwuRwzXXZowuMGZsLzVh/view?usp=sharing" width="640" height="360" allow="autoplay"></iframe>
 
 Azure Data Factory is updated to execute the "silver" to "gold" notebooks automatically with each pipeline run.
 
