@@ -54,8 +54,6 @@ This project leverages the following Azure services:
    * Mount the storage.
    * Transform data from "silver" to "gold" layer.
 
-<iframe src="" width="640" height="360" allow="autoplay"></iframe>
-
 Azure Data Factory is updated to execute the "silver" to "gold" notebooks automatically with each pipeline run.
 
 <img src="https://github.com/Dharmil290998/End-to-end-Data-Engineer-Project-E-commerce/blob/main/Data%20pipeline.png">
