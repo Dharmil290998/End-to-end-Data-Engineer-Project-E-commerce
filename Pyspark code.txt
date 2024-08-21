@@ -1,0 +1,223 @@
+# Databricks notebook source
+dbutils.fs.ls("/mnt/azureecommercedata/silver")
+
+
+input_path = "/mnt/azureecommercedata/silver/dbo/feedback_dataset/feedback_dataset.parquet"
+
+
+df = spark.read.format("parquet") \
+    .option("header", "true") \
+    .load(input_path)
+display(df)
+
+
+df.columns
+
+
+df = df.withColumnRenamed("Feedback_Answer_Date", "feedback_answer_date") \
+       .withColumnRenamed("Feedback_Answer_Time", "feedback_answer_time") \
+       .withColumnRenamed("Feedback_Answer_Year", "feedback_answer_year") \
+       .withColumnRenamed("Feedback_Answer_Month", "feedback_answer_month") \
+       .withColumnRenamed("Feedback_Answer_Day", "feedback_answer_day") \
+       .withColumnRenamed("Feedback_Answer_Season", "feedback_answer_season") \
+       .withColumnRenamed("Feedback_Answer_Hour", "feedback_answer_hour") \
+       .withColumnRenamed("Feedback_Answer_Minute", "feedback_answer_minute") \
+       .withColumnRenamed("Feedback_Answer_Second", "feedback_answer_second") \
+       .withColumnRenamed("Feedback_Answer_AM_PM", "feedback_answer_am/pm") \
+       .withColumnRenamed("Feedback_Answer_TimeOfDay", "Feedback_Answer_timeofday") \
+       .withColumnRenamed("feedback_form_sent_Month", "feedback_form_sent_month") \
+       .withColumnRenamed("Feedback_Form_Sent_Day", "feedback_form_sent_day") \
+       .withColumnRenamed("Feedback_Form_Sent_Year", "feedback_form_sent_year") \
+       .withColumnRenamed("feedback_form_sent_Season", "feedback_form_sent_season")
+
+display(df)
+       
+
+from pyspark.sql.functions import date_format, col
+
+# Assuming 'df' is your DataFrame and 'Feedback_Answer_Time' contains timestamp or string values
+df = df.withColumn("Feedback_Answer_time", date_format(col("Feedback_Answer_time"), "HH:mm:ss"))
+
+display(df)
+
+
+from pyspark.sql.functions import date_format, col
+
+# Assuming 'df' is your DataFrame and 'feedback_form_sent_date' contains timestamp or string values
+df = df.withColumn("feedback_form_sent_date", date_format(col("feedback_form_sent_date"), "yyyy-MM-dd"))
+
+display(df)
+
+
+output_path = "/mnt/azureecommercedata/gold/dbo/feedback_dataset/"
+df.write.format("delta").mode("overwrite").save(output_path)
+
+
+input_path = "/mnt/azureecommercedata/silver/dbo/order_dataset/order_dataset.parquet"
+
+
+df = spark.read.format("parquet") \
+    .option("header", "true") \
+    .load(input_path)
+display(df)
+
+
+from pyspark.sql.functions import date_format, col
+
+# List of columns that need formatting
+columns_to_format = ["order_Time", "order_approved_Time", "pickup_Time","delivered_Time"]
+
+# Apply date_format to each column
+for column in columns_to_format:
+    df = df.withColumn(column, date_format(col(column), "HH:mm"))
+
+# Display the updated DataFrame
+display(df)
+
+
+df.columns
+
+
+df = df.withColumnRenamed("order_Date", "order_date") \
+       .withColumnRenamed("order_Time", "order_time") \
+       .withColumnRenamed("order_Year", "order_year") \
+       .withColumnRenamed("order_Month", "order_month") \
+       .withColumnRenamed("order_Day", "order_day") \
+       .withColumnRenamed("order_Season", "order_season") \
+       .withColumnRenamed("order_Hour", "order_hour") \
+       .withColumnRenamed("order_Minute", "order_minute") \
+       .withColumnRenamed("order_AM_PM", "order_am/pm") \
+       .withColumnRenamed("order_TimeOfDay", "order_timeofday") \
+       .withColumnRenamed("order_approved_Date", "order_approved_date") \
+       .withColumnRenamed("order_approved_Time", "order_approved_time") \
+       .withColumnRenamed("order_approved_Year", "order_approved_year") \
+       .withColumnRenamed("order_approved_Month", "order_approved_month") \
+       .withColumnRenamed("order_approved_Day", "order_approved_day") \
+       .withColumnRenamed("order_approved_Season", "order_approved_season") \
+       .withColumnRenamed("order_approved_Hour", "order_approved_hour") \
+       .withColumnRenamed("order_approved_Minute", "order_approved_minute") \
+       .withColumnRenamed("order_approved_AM_PM", "order_approved_am/pm") \
+       .withColumnRenamed("orde_approved_TimeOfDay", "order_approved_timeofday") \
+       .withColumnRenamed("pickup_Date", "pickup_date") \
+       .withColumnRenamed("pickup_Time", "pickup_time") \
+       .withColumnRenamed("pickup_Year", "pickup_year") \
+       .withColumnRenamed("pickup_Month", "pickup_month") \
+       .withColumnRenamed("pickup_Day", "pickup_day") \
+       .withColumnRenamed("pickup_Season", "pickup_season") \
+       .withColumnRenamed("pickup_Hour", "pickup_hour") \
+       .withColumnRenamed("pickup_Minute", "pickup_minute") \
+       .withColumnRenamed("pickup_AM_PM", "pickup_am/pm") \
+       .withColumnRenamed("pickup_TimeOfDay", "pickup_timeofday") \
+       .withColumnRenamed("delivered_Date", "delivered_date") \
+        .withColumnRenamed("delivered_Time", "delivered_time") \
+       .withColumnRenamed("delivered_Year", "delivered_year") \
+       .withColumnRenamed("delivered_Month", "delivered_month") \
+       .withColumnRenamed("delivered_Day", "delivered_day") \
+       .withColumnRenamed("delivered_Season", "delivered_season") \
+       .withColumnRenamed("delivered_Hour", "delivered_hour") \
+       .withColumnRenamed("delivered_Minute", "delivered_minute") \
+       .withColumnRenamed("delivered_AM_PM", "delivered_am/pm") \
+       .withColumnRenamed("delivered_TimeOfDay", "delivered_timeofday") \
+       .withColumnRenamed("estimated_delivery_Year", "estimated_delivery_year") \
+       .withColumnRenamed("estimated_delivery_Month", "estimated_delivery_month") \
+       .withColumnRenamed("estimated_delivery_Day", "estimated_delivery_day") \
+       .withColumnRenamed("estimated_delivery_Season", "estimated_delivery_season") \
+       .withColumnRenamed("estimated_time_delivery", "estimated_delivery_date")
+
+display(df)
+
+output_path = "/mnt/azureecommercedata/gold/dbo/order_dataset/"
+df.write.format("delta").mode("overwrite").save(output_path)
+
+
+input_path = "/mnt/azureecommercedata/silver/dbo/order_item_dataset/order_item_dataset.parquet"
+
+
+df = spark.read.format("parquet") \
+    .option("header", "true") \
+    .load(input_path)
+display(df)
+
+
+from pyspark.sql.functions import date_format, col
+
+# List of columns that need formatting
+columns_to_format = ["pickup_limit_Time"]
+
+# Apply date_format to each column
+for column in columns_to_format:
+    df = df.withColumn(column, date_format(col(column), "HH:mm"))
+
+display(df)
+
+
+df.columns
+
+
+df = df.withColumnRenamed("pickup_limit_Date", "pickup_limit_date") \
+       .withColumnRenamed("pickup_limit_Time", "pickup_limit_time") \
+       .withColumnRenamed("pickup_limit_Year", "pickup_limit_year") \
+       .withColumnRenamed("pickup_limit_Month", "pickup_limit_month") \
+       .withColumnRenamed("pickup_limit_Day", "pickup_limit_day") \
+       .withColumnRenamed("pickup_limit_Season", "pickup_limit_season") \
+       .withColumnRenamed("pickup_limit_Hour", "pickup_limit_hour") \
+       .withColumnRenamed("pickup_limit_Minute", "pickup_limit_minute") \
+       .withColumnRenamed("pickup_limit_AM_PM", "pickup_limit_am/pm") \
+       .withColumnRenamed("pickup_limit_TimeOfDay", "pickup_limit_timeofday")
+
+
+output_path = "/mnt/azureecommercedata/gold/dbo/order_item_dataset/"
+df.write.format("delta").mode("overwrite").save(output_path)
+
+
+input_path = "/mnt/azureecommercedata/silver/dbo/payment_dataset/payment_dataset.parquet"
+
+
+df = spark.read.format("parquet") \
+    .option("header", "true") \
+    .load(input_path)
+display(df)
+
+
+output_path = "/mnt/azureecommercedata/gold/dbo/payment_dataset/"
+df.write.format("delta").mode("overwrite").save(output_path)
+
+
+input_path = "/mnt/azureecommercedata/silver/dbo/product_dataset/product_dataset.parquet"
+
+
+df = spark.read.format("parquet") \
+    .option("header", "true") \
+    .load(input_path)
+display(df)
+
+
+output_path = "/mnt/azureecommercedata/gold/dbo/product_dataset/"
+df.write.format("delta").mode("overwrite").save(output_path)
+
+
+input_path = "/mnt/azureecommercedata/silver/dbo/seller_dataset/seller_dataset.parquet"
+
+
+df = spark.read.format("parquet") \
+    .option("header", "true") \
+    .load(input_path)
+display(df)
+
+
+output_path = "/mnt/azureecommercedata/gold/dbo/seller_dataset/"
+df.write.format("delta").mode("overwrite").save(output_path)
+
+
+input_path = "/mnt/azureecommercedata/silver/dbo/user_dataset/user_dataset.parquet"
+
+
+df = spark.read.format("parquet") \
+    .option("header", "true") \
+    .load(input_path)
+display(df)
+
+
+output_path = "/mnt/azureecommercedata/gold/dbo/user_dataset/"
+df.write.format("delta").mode("overwrite").save(output_path)
+
